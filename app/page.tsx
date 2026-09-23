@@ -12,8 +12,8 @@ export default function Home() {
       <Navbar />
       <main id="top">
         <Hero />
-        <Vacation />
         <Services />
+        <Vacation />
         <VisaHandling />
       </main>
       <Footer />
