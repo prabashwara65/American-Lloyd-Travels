@@ -105,6 +105,7 @@ h2 { font-size: clamp(42px, 5vw, 70px); line-height: 1; margin-bottom: 0; }
   .site-header { height: 100px; padding: 0 24px; } 
   .brand { transform: scale(.78); transform-origin: left center; } 
   .main-nav { background: #fff; box-shadow: 0 15px 20px rgba(0,0,0,.1); display: none; flex-direction: column; gap: 0; left: 0; padding: 18px 30px; position: absolute; right: 0; top: 100px; } 
+  .main-nav.open { display: flex; }
   .main-nav a { font-size: 18px; padding: 10px; } 
   .menu-toggle { display: block; } 
   .hero { min-height: 600px; padding: 105px 28px; } 
@@ -126,5 +127,4 @@ h2 { font-size: clamp(42px, 5vw, 70px); line-height: 1; margin-bottom: 0; }
   .footer-bottom { grid-template-columns: 1fr; } 
   .hero { min-height: 540px; } 
   .hero h1 { font-size: 52px; } 
-}
 }
