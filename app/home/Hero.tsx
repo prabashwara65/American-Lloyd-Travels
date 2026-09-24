@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const HERO_IMAGES = [
   "/assets/img1.jpeg",
@@ -34,30 +35,36 @@ export function Hero() {
   };
 
   return (
-    <section
-      className="group relative flex flex-col w-full bg-white overflow-hidden"
+    <motion.section
+      initial={{ opacity: 0, y: 15 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="group relative flex flex-col w-full bg-white"
       aria-label="Travel destinations slideshow"
     >
       {/* Slideshow Container */}
-      <div className="relative min-h-[75vh] w-full overflow-hidden bg-slate-900">
-        {/* Background Images */}
-        {HERO_IMAGES.map((img, index) => (
-          <div
-            key={img}
-            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
-            }`}
+      <div className="relative h-[85vh] sm:h-[90vh] w-full overflow-hidden bg-slate-900">
+        {/* Background Images with Animated Crossfade */}
+        <AnimatePresence mode="popLayout">
+          <motion.div
+            key={HERO_IMAGES[currentIndex]}
+            initial={{ opacity: 0, scale: 1.02 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.9, ease: "easeInOut" }}
+            className="absolute inset-0 h-full w-full"
           >
             <img
-              src={img}
-              alt={`Travel destination ${index + 1}`}
-              className="h-full w-full object-cover"
+              src={HERO_IMAGES[currentIndex]}
+              alt={`Travel destination ${currentIndex + 1}`}
+              className="h-full w-full object-cover object-center"
             />
-          </div>
-        ))}
+          </motion.div>
+        </AnimatePresence>
 
-        {/* Backward Arrow Button (No Padding, Hover Visible) */}
-        <button
+        {/* Backward Arrow Button */}
+        <motion.button
+          whileTap={{ scale: 0.9 }}
           onClick={handlePrev}
           aria-label="Previous slide"
           className="absolute left-6 top-1/2 z-30 -translate-y-1/2 p-0 text-white opacity-0 transition-opacity duration-300 hover:text-blue-200 group-hover:opacity-100 focus:opacity-100"
@@ -74,10 +81,11 @@ export function Hero() {
               d="M15 19l-7-7 7-7"
             />
           </svg>
-        </button>
+        </motion.button>
 
-        {/* Forward Arrow Button (No Padding, Hover Visible) */}
-        <button
+        {/* Forward Arrow Button */}
+        <motion.button
+          whileTap={{ scale: 0.9 }}
           onClick={handleNext}
           aria-label="Next slide"
           className="absolute right-6 top-1/2 z-30 -translate-y-1/2 p-0 text-white opacity-0 transition-opacity duration-300 hover:text-blue-200 group-hover:opacity-100 focus:opacity-100"
@@ -90,11 +98,17 @@ export function Hero() {
           >
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
-        </button>
+        </motion.button>
       </div>
 
-      {/* Hero Tail / Tagline Banner */}
-      <div className="w-full bg-white border-b border-gray-200 py-6 text-center shadow-inner">
+      {/* Hero Tail / Tagline Banner with Prominent Downward Drop Shadow */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="relative z-30 w-full bg-white border-b border-gray-200 py-6 text-center shadow-[0_12px_24px_-6px_rgba(0,0,0,0.2)]"
+      >
         <p className="text-2xl sm:text-3xl lg:text-4xl text-[#1e4bb8] tracking-wide">
           <span className="font-extrabold italic font-serif mr-2">
             Inspiring
@@ -103,7 +117,7 @@ export function Hero() {
             destinations within your reach......
           </span>
         </p>
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }

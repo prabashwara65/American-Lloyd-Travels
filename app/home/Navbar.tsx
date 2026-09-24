@@ -9,29 +9,29 @@ export function Navbar() {
 
   return (
     <header className="top-0 z-50 w-full border-b border-gray-100 pb-[8px] bg-[#f2efef]">
-      {/* Navbar Content Area - Shadow placed on the bottom edge before the padding ribbon */}
+      {/* Navbar Content Area */}
       <div className="bg-white shadow-[0_4px_6px_-1px_rgba(0,0,0,0.15),0_2px_4px_-2px_rgba(0,0,0,0.1)] relative z-10">
-        <div className="mx-auto flex max-w-5xl items-center justify-between pl-2 sm:pl-4 lg:pl-6 pr-6 sm:pr-8 lg:pr-12 py-3">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 sm:px-6 py-[14.5px]">
           
-          {/* Logo - Shifted Left */}
-          <div className="flex items-center">
+          {/* Logo - Height expanded to 69px (+2px) */}
+          <div className="flex items-center shrink-0">
             <a href="#top" className="flex items-center" aria-label="American Lloyd Travels home">
               <Image
                 src="/assets/logo.webp"
                 alt="American Lloyd Travels Limited"
                 width={280}
-                height={80}
+                height={85}
                 priority
-                className="h-16 w-auto object-contain transition-all"
+                className="h-[69px] w-auto object-contain transition-all"
               />
             </a>
           </div>
 
-          {/* Navigation Links */}
-          <div className="flex items-center justify-end">
+          {/* Navigation Links - Centered */}
+          <div className="flex grow items-center justify-center">
             <nav
               aria-label="Main navigation"
-              className={`flex-col md:flex-row items-center gap-6 lg:gap-8 ${
+              className={`flex-col md:flex-row items-center justify-center gap-5 lg:gap-7 ${
                 isOpen
                   ? "flex absolute top-full left-0 w-full bg-white p-6 shadow-md md:static md:p-0 md:shadow-none"
                   : "hidden md:flex"
@@ -67,7 +67,7 @@ export function Navbar() {
 
             {/* Mobile Navigation Toggle */}
             <button
-              className="p-2 text-2xl font-bold text-[#1e4bb8] md:hidden ml-4"
+              className="p-2 text-2xl font-bold text-[#1e4bb8] md:hidden ml-auto"
               aria-expanded={isOpen}
               aria-label={isOpen ? "Close navigation" : "Open navigation"}
               onClick={() => setIsOpen(!isOpen)}
