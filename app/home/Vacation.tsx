@@ -44,9 +44,10 @@ export function Vacation() {
             {/* Divider Line */}
             <div className="w-32 h-[1px] bg-gray-300 mb-6" />
 
-            {/* Subtext Paragraph */}
-            <p className="text-base sm:text-lg text-gray-600 mb-8 max-w-md font-normal leading-relaxed">
-              Find the exotic vacation of your dream today
+            {/* Centered Black Text with line break after "your" */}
+            <p className="text-base sm:text-lg text-black mb-8 max-w-md font-normal leading-relaxed text-center">
+              Find the exotic vacation of your <br />
+              dream today
             </p>
 
             {/* CTA Button */}
@@ -54,7 +55,7 @@ export function Vacation() {
               href="#packages"
               className="inline-block bg-[#2f5ebb] hover:bg-[#1e4bb8] text-white text-sm font-semibold px-8 py-3 rounded-full transition-colors duration-200 shadow-sm"
             >
-              Click here to learn more[cite: 6]
+              Click here to learn more
             </a>
 
           </div>

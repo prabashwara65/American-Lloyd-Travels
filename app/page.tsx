@@ -8,7 +8,7 @@ import { VisaHandling } from "./home/VisaHandling";
 
 export default function Home() {
   return (
-    <div className="site-shell">
+    <div className="site-shell bg-[#FFFFFF] min-h-screen">
       <Navbar />
       <main id="top">
         <Hero />

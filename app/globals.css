@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #FFFFFF;
   --foreground: #171717;
   --blue: #234c9c; 
   --ink: #15233d; 
@@ -16,12 +16,12 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 body {
   background: var(--background);
@@ -32,7 +32,7 @@ body {
   color: var(--ink); 
   font-family: "Trebuchet MS", sans-serif; 
 }
-* { box-sizing: border-box; }
+/* * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 .site-header { align-items: center; background: #fff; display: flex; height: 138px; justify-content: space-between; padding: 0 clamp(28px, 7vw, 108px); position: relative; z-index: 2; }
 .brand { color: var(--blue); display: block; height: 70px; position: relative; width: 250px; }
@@ -127,4 +127,4 @@ h2 { font-size: clamp(42px, 5vw, 70px); line-height: 1; margin-bottom: 0; }
   .footer-bottom { grid-template-columns: 1fr; } 
   .hero { min-height: 540px; } 
   .hero h1 { font-size: 52px; } 
-}
+} */
