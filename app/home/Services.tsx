@@ -14,12 +14,12 @@ const SERVICES_LIST = [
 
 export function Services() {
   return (
-    <section className="w-full bg-slate-50 py-10" id="services">
+    <section className="w-full bg-white py-10" id="services">
       <div className="mx-auto max-w-5xl px-6 sm:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
           
           {/* Left Card: Company Intro */}
-          <div className="flex flex-col justify-between bg-white p-6 sm:p-7 rounded-sm shadow-md border border-gray-100">
+          <div className="flex flex-col justify-between bg-white p-[23px] sm:p-[27px] rounded-sm shadow-sm border border-gray-400">
             <p className="text-[#2f5ebb] text-sm sm:text-base leading-relaxed mb-6">
               American Lloyd Travels Ltd, is a forerunner in fully-fledged BSP
               ticketing, specializing in business & leisure travel with IATA
@@ -39,8 +39,8 @@ export function Services() {
           </div>
 
           {/* Right Card: Services Bulleted List */}
-          <div className="bg-white p-6 sm:p-7 rounded-sm shadow-sm border border-gray-400">
-            <h2 className="text-xs sm:text-sm font- text-[#2f5ebb] uppercase tracking-wider mb-3">
+          <div className="bg-white p-[23px] sm:p-[27px] rounded-sm shadow-sm border border-gray-400">
+            <h2 className="text-xs sm:text-sm font-black text-[#2f5ebb] uppercase tracking-wider mb-3">
               Our services
             </h2>
 
