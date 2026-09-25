@@ -1,33 +1,34 @@
-import Link from "next/link";
-import { PageIntro } from "../components/PageIntro";
-import { services } from "../data/home";
+import Image from "next/image";
 
 export default function PackagesPage() {
   return (
-    <main className="w-full flex-grow">
-      <PageIntro
-        eyebrow="Go further"
-        title="Packages made for your kind of travel."
-        description="From quick escapes to carefully planned adventures, choose a journey that fits the way you want to see the world."
-        image="/assets/img3.jpeg"
-      />
-      <section className="mx-auto max-w-6xl px-6 py-16 sm:px-10 lg:px-16">
-        <div className="mb-10 flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
-          <div>
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.25em] text-[#2f5ebb]">Travel, thoughtfully arranged</p>
-            <h2 className="font-serif text-4xl font-normal text-[#15233d] sm:text-5xl">Explore our packages</h2>
-          </div>
-          <Link href="/packages/gallery" className="text-sm font-bold uppercase tracking-wide text-[#2f5ebb] underline underline-offset-8">View gallery <span className="ml-2 text-lg">↗</span></Link>
+    <main className="w-full flex-grow bg-white text-slate-700">
+      {/* Hero Banner Section */}
+      <section className="relative h-[80vh] min-h-[550px] w-full overflow-hidden">
+        <Image
+          src="/assets/packages/camp.jpeg"
+          alt="Camping overlooking mountain landscape"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </section>
+
+      {/* Main Content Area */}
+      <section className="mx-auto max-w-5xl px-6 py-10 sm:px-10 lg:px-16">
+        {/* Title Bar */}
+        <div className="mb-8 bg-slate-100 py-4 px-6 rounded-sm">
+          <h1 className="text-5xl font-bold tracking-wide text-[#35487a]">
+            Packages
+          </h1>
         </div>
-        <div className="grid gap-px bg-[#d9dfe7] sm:grid-cols-2 lg:grid-cols-3">
-          {services.map(([number, title, text]) => (
-            <article className="min-h-56 bg-white p-7 transition-colors hover:bg-[#f1f6f6]" key={number}>
-              <span className="text-sm font-serif text-[#c5a568]">{number}</span>
-              <h3 className="mt-8 font-serif text-2xl font-normal text-[#15233d]">{title}</h3>
-              <p className="mt-3 text-sm leading-6 text-slate-600">{text}</p>
-              <Link href="/contact" className="mt-7 inline-block text-xs font-bold uppercase tracking-wide text-[#2f5ebb]">Plan this journey →</Link>
-            </article>
-          ))}
+
+        {/* Descriptive Text */}
+        <div className="max-w-4xl px-2 text-xs leading-relaxed text-slate-500 sm:text-sm">
+          <p>
+            <strong className="font-semibold text-slate-600">Our planet</strong> is a beautiful and vast place, with so much to see and explore. As human beings, we have an innate desire to explore the world around us and to experience all that it has to offer. However, planning a holiday can often be a daunting and time-consuming task, which is where our dedicated holidays team comes in. We understand that everyone has their own unique interests and desires when it comes to travel. That&apos;s why we offer an exclusive range of luxury packages, designed to cater to a wide range of tastes and preferences. From hiking tours in the highest places on Earth, to diving in the deepest oceans, or simply relaxing on a shopping tour, we have just the right package for you. If you don&apos;t find our ready-made packages interesting, don&apos;t worry! We can tailor-make a package to your specific requirements and inspirations. So drop us a call, sit down, relax and we will make the magic happen.
+          </p>
         </div>
       </section>
     </main>
