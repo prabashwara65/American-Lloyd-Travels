@@ -19,10 +19,10 @@ export function Hero() {
   // Auto-play slider with 5-second interval
   useEffect(() => {
     const timer = setInterval(() => {
-      handleNext();
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % HERO_IMAGES.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, [currentIndex]);
+  }, []);
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % HERO_IMAGES.length);

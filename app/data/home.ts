@@ -1,7 +1,12 @@
 export const navigationLinks = [
-  { label: "Home", href: "#top" },
+  { label: "Home", href: "/" },
   { label: "About us", href: "/about-us" },
-  { label: "Packages", href: "/services", hasChevron: true },
+  {
+    label: "Packages",
+    href: "/packages",
+    hasChevron: true,
+    children: [{ label: "Gallery", href: "/packages/gallery" }],
+  },
   { label: "Visa", href: "/visa" },
   { label: "Contact us", href: "/contact" },
 ];

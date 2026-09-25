@@ -3,10 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { navigationLinks } from "../data/home";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isPackagesOpen, setIsPackagesOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-[#f2efef] pb-[8px]">
@@ -38,32 +41,66 @@ export function Navbar() {
                   : "hidden md:flex"
               }`}
             >
-              {navigationLinks.map((link, index) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  className={`relative flex items-center gap-1 py-1 text-[15px] font-bold transition-colors ${
-                    index === 0
-                      ? "text-[#1e4bb8] after:absolute after:bottom-0 after:left-0 after:h-[2.5px] after:w-full after:rounded-full after:bg-[#1e4bb8]"
-                      : "text-[#1e4bb8] hover:text-[#123386]"
-                  }`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.label}
-                  {link.hasChevron && (
-                    <svg
-                      className="h-3 w-3 stroke-[2.5]"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <polyline points="6 9 12 15 18 9" />
-                    </svg>
-                  )}
-                </Link>
-              ))}
+              {navigationLinks.map((link) => {
+                const isActive = link.href === "/"
+                  ? pathname === "/"
+                  : pathname === link.href || pathname.startsWith(`${link.href}/`);
+
+                return (
+                  <div className="group relative w-full md:w-auto" key={link.label}>
+                    <div className="flex items-center justify-center">
+                      <Link
+                        href={link.href}
+                        className={`relative flex items-center gap-1 py-1 text-[15px] font-bold transition-colors ${
+                          isActive
+                            ? "text-[#1e4bb8] after:absolute after:bottom-0 after:left-0 after:h-[2.5px] after:w-full after:rounded-full after:bg-[#1e4bb8]"
+                            : "text-[#1e4bb8] hover:text-[#123386]"
+                        }`}
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                      {link.hasChevron && (
+                        <button
+                          type="button"
+                          aria-label="Toggle Packages menu"
+                          aria-expanded={isPackagesOpen}
+                          className="ml-1 p-1 text-[#1e4bb8]"
+                          onClick={() => setIsPackagesOpen(!isPackagesOpen)}
+                        >
+                          <svg
+                            className={`h-3 w-3 stroke-[2.5] transition-transform ${isPackagesOpen ? "rotate-180" : ""}`}
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <polyline points="6 9 12 15 18 9" />
+                          </svg>
+                        </button>
+                      )}
+                    </div>
+                    {link.children && (
+                      <div className={`${isPackagesOpen ? "flex" : "hidden"} absolute left-1/2 top-full z-50 min-w-44 -translate-x-1/2 flex-col border-t-2 border-[#2f5ebb] bg-white p-2 text-center shadow-lg md:group-hover:flex md:group-focus-within:flex`}>
+                        {link.children.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className="px-4 py-3 text-sm font-semibold text-[#1e4bb8] hover:bg-[#f1f6f6]"
+                            onClick={() => {
+                              setIsOpen(false);
+                              setIsPackagesOpen(false);
+                            }}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </nav>
 
             {/* Mobile Navigation Toggle */}

@@ -30,7 +30,7 @@ export function Services() {
 
             <div className="flex justify-center pt-2">
               <a
-                href="#about"
+                href="/about-us"
                 className="inline-block bg-[#2f5ebb] hover:bg-[#1e4bb8] text-white text-sm font-semibold px-6 py-2 rounded-full transition-colors duration-200 shadow-sm"
               >
                 Click here to learn more
