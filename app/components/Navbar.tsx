@@ -1,21 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image"; // Replace with standard <img> if not using Next.js
+import Image from "next/image";
+import Link from "next/link";
 import { navigationLinks } from "../data/home";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="top-0 z-50 w-full border-b border-gray-100 pb-[8px] bg-[#f2efef]">
+    <header className="sticky top-0 z-50 w-full border-b border-gray-100 bg-[#f2efef] pb-[8px]">
       {/* Navbar Content Area */}
-      <div className="bg-white shadow-[0_4px_6px_-1px_rgba(0,0,0,0.15),0_2px_4px_-2px_rgba(0,0,0,0.1)] relative z-10">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 sm:px-6 py-[14.5px]">
+      <div className="relative z-10 bg-white shadow-[0_4px_6px_-1px_rgba(0,0,0,0.15),0_2px_4px_-2px_rgba(0,0,0,0.1)]">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-[14.5px] sm:px-6">
           
-          {/* Logo - Height expanded to 69px (+2px) */}
-          <div className="flex items-center shrink-0">
-            <a href="#top" className="flex items-center" aria-label="American Lloyd Travels home">
+          {/* Logo */}
+          <div className="flex shrink-0 items-center">
+            <Link href="/" className="flex items-center" aria-label="American Lloyd Travels home">
               <Image
                 src="/assets/logo.webp"
                 alt="American Lloyd Travels Limited"
@@ -24,21 +25,21 @@ export function Navbar() {
                 priority
                 className="h-[69px] w-auto object-contain transition-all"
               />
-            </a>
+            </Link>
           </div>
 
-          {/* Navigation Links - Centered */}
+          {/* Navigation Links */}
           <div className="flex grow items-center justify-center">
             <nav
               aria-label="Main navigation"
-              className={`flex-col md:flex-row items-center justify-center gap-5 lg:gap-7 ${
+              className={`flex-col items-center justify-center gap-5 md:flex-row lg:gap-7 ${
                 isOpen
-                  ? "flex absolute top-full left-0 w-full bg-white p-6 shadow-md md:static md:p-0 md:shadow-none"
+                  ? "absolute left-0 top-full flex w-full bg-white p-6 shadow-md md:static md:p-0 md:shadow-none"
                   : "hidden md:flex"
               }`}
             >
               {navigationLinks.map((link, index) => (
-                <a
+                <Link
                   key={link.label}
                   href={link.href}
                   className={`relative flex items-center gap-1 py-1 text-[15px] font-bold transition-colors ${
@@ -61,13 +62,13 @@ export function Navbar() {
                       <polyline points="6 9 12 15 18 9" />
                     </svg>
                   )}
-                </a>
+                </Link>
               ))}
             </nav>
 
             {/* Mobile Navigation Toggle */}
             <button
-              className="p-2 text-2xl font-bold text-[#1e4bb8] md:hidden ml-auto"
+              className="ml-auto p-2 text-2xl font-bold text-[#1e4bb8] md:hidden"
               aria-expanded={isOpen}
               aria-label={isOpen ? "Close navigation" : "Open navigation"}
               onClick={() => setIsOpen(!isOpen)}

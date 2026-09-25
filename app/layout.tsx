@@ -1,29 +1,25 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+// app/layout.tsx
 import "./globals.css";
+import { Navbar } from "./components/Navbar";
+import { Footer } from "./components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "American Lloyd Travels | Your journey starts here",
-  description: "American Lloyd Travels Ltd - business and leisure travel since 1987.",
-};
-
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className="h-full">
+      {/* 
+        1. flex flex-col min-h-screen creates a full-height column stack.
+        2. relative ensures nested absolute items don't bleed out.
+      */}
+      <body className="relative flex min-h-screen flex-col bg-white">
+        <Navbar />
+        {/* flex-1 / flex-grow expands content to push footer down */}
+        <div className="flex-1 w-full flex flex-col">{children}</div>
+        <Footer />
+      </body>
     </html>
   );
 }

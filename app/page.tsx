@@ -1,23 +1,16 @@
-import { CookieNotice } from "./components/CookieNotice";
-import { Footer } from "./home/Footer";
+// app/page.tsx
 import { Hero } from "./home/Hero";
-import { Navbar } from "./home/Navbar";
 import { Services } from "./home/Services";
 import { Vacation } from "./home/Vacation";
 import { VisaHandling } from "./home/VisaHandling";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="site-shell bg-[#FFFFFF] min-h-screen">
-      <Navbar />
-      <main id="top">
-        <Hero />
-        <Services />
-        <Vacation />
-        <VisaHandling />
-      </main>
-      <Footer />
-      <CookieNotice />
-    </div>
+    <main className="w-full flex-grow">
+      <Hero />
+      <Services />
+      <Vacation />
+      <VisaHandling />
+    </main>
   );
 }

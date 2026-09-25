@@ -1,9 +1,9 @@
 export const navigationLinks = [
   { label: "Home", href: "#top" },
-  { label: "About us", href: "#about" },
-  { label: "Packages", href: "#services", hasChevron: true },
-  { label: "Visa", href: "#visa" },
-  { label: "Contact us", href: "#contact" },
+  { label: "About us", href: "/about-us" },
+  { label: "Packages", href: "/services", hasChevron: true },
+  { label: "Visa", href: "/visa" },
+  { label: "Contact us", href: "/contact" },
 ];
 
 export const services = [
