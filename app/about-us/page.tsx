@@ -13,7 +13,7 @@ export default function AboutPage() {
       {/* 1. Hero Cover Image Section */}
       <section className="relative h-[80vh] min-h-[550px] w-full overflow-hidden">
         <Image
-          src="/assets/img8.jpeg"
+          src="/assets/about-us/img8.jpeg"
           alt="American Lloyd Travels"
           fill
           priority
